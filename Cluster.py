@@ -35,7 +35,7 @@ def DeleteRedun(cluster_result):
     cluster_result_tmp = copy.deepcopy(cluster_result)
     for i in range(len(cluster_result_tmp)):
         for j in range(len(cluster_result_tmp[i])):
-            if len(cluster_result_tmp[i][j]) <= 10:
+            if len(cluster_result_tmp[i][j]) <= 9:
                 cluster_result[i].remove(cluster_result_tmp[i][j])
 
     cluster_result_tmp = copy.deepcopy(cluster_result)
