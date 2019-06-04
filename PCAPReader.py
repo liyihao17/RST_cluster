@@ -11,6 +11,9 @@ def ImportMessage():
     message_session3 = PCAPImporter.readFile('ftp3.pcap').values()
     message_session4 = PCAPImporter.readFile('ftp4.pcap').values()
     message = message_session1 + message_session2 + message_session3 + message_session4
+
+    message_session5 = PCAPImporter.readFile('http.pcap').values()
+    message = message_session5
     symbol = Symbol(messages=message)
 
     #将pcap包中的内容转换为二维列表
@@ -34,6 +37,8 @@ def ImportMessage():
         if b'\t' in message_list_tmp[i]:
             message_list_tmp[i] = message_list_tmp[i].replace(b'\t',b' ')
     message_list_tmp,message_list_original = message_list_original,message_list_tmp
+
+    print("总共有" + str(len(message_list_original)) + "条报文")
 
 
     return message_list_original

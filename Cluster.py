@@ -42,6 +42,16 @@ def DeleteRedun(cluster_result):
     for i in range(len(cluster_result_tmp)):
         if len(cluster_result_tmp[i]) == 0:
             cluster_result.remove(cluster_result_tmp[i])
+
+    cluster_result_tmp = copy.deepcopy(cluster_result)
+    for i in range(len(cluster_result_tmp)):
+        cluster_num = 0
+        for j in range(len(cluster_result_tmp[i])):
+            for k in range(len(cluster_result_tmp[i][j])):
+                cluster_num = cluster_num + 1
+        if cluster_num <= 20:
+            cluster_result.remove(cluster_result_tmp[i])
+
     return cluster_result
 
 def WriteBin(cluster_result):
@@ -71,7 +81,3 @@ if __name__ == '__main__':
             print("\n")
             for k in range(len(cluster_result[i][j])):
                 print(cluster_result[i][j][k])
-    # for i in range(len(cluster_result[0])):
-    #     print("")
-    #     for j in range(len(cluster_result[0][i])):
-    #         print(cluster_result[0][i][j])
